@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Northwest Indiana Dental Care – Schererville, IN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0E2A47;
+      --navy2: #163555;
+      --teal: #1A7A8A;
+      --teal-light: #2A9BAD;
+      --gold: #D4A843;
+      --gold-light: #F0D080;
+      --cream: #F8F4EE;
+      --white: #FFFFFF;
+      --text: #2D3A45;
+      --text-mid: #556270;
+      --text-light: #8A97A3;
+      --border: #E2DCCE;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito Sans', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
+
+    /* ══════════════════════════════
+       TOP BAR
+    ══════════════════════════════ */
+    .topbar {
+      background: var(--navy);
+      color: rgba(255,255,255,0.75);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      padding: 7px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .topbar-left { display: flex; gap: 24px; align-items: center; }
+    .topbar-right { display: flex; gap: 20px; align-items: center; }
+    .topbar a { color: var(--gold-light); text-decoration: none; font-weight: 600; }
+    .topbar a:hover { color: #fff; }
+
+    /* ══════════════════════════════
+       HEADER / NAV
+    ══════════════════════════════ */
+    header {
+      background: #fff;
+      border-bottom: 3px solid var(--teal);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 16px rgba(14,42,71,0.10);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 78px;
+    }
+
+    .logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-icon {
+      width: 52px; height: 52px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .logo-text { line-height: 1.2; }
+    .logo-text strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .logo-text span {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    .main-nav { display: flex; align-items: center; list-style: none; gap: 0; height: 78px; }
+
+    .main-nav > li { position: relative; height: 100%; display: flex; align-items: center; }
+
+    .main-nav > li > a,
+    .main-nav > li > button {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0 13px;
+      height: 100%;
+      font-size: 0.79rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--navy);
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.2s, background 0.2s;
+      font-family: 'Nunito Sans', sans-serif;
+    }
+    .main-nav > li > a:hover,
+    .main-nav > li > button:hover {
+      color: var(--teal);
+      background: rgba(26,122,138,0.05);
+    }
+
+    .caret { font-size: 0.55rem; margin-top: 1px; opacity: 0.6; transition: transform 0.2s; }
+    .main-nav > li:hover .caret { transform: rotate(180deg); }
+
+    .nav-book-btn {
+      background: var(--teal) !important;
+      color: #fff !important;
+      padding: 10px 18px !important;
+      height: auto !important;
+      border-radius: 4px !important;
+      font-size: 0.75rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.05em;
+      margin-left: 8px;
+    }
+    .nav-book-btn:hover { background: var(--navy) !important; }
+
+    /* Level-1 dropdown */
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 225px;
+      background: #fff;
+      border-top: 3px solid var(--teal);
+      box-shadow: 0 8px 32px rgba(14,42,71,0.14);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(6px);
+      transition: opacity 0.18s, transform 0.18s;
+      z-index: 1000;
+      list-style: none;
+    }
+    .main-nav > li:hover > .dropdown {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+    .dropdown > li { position: relative; }
+    .dropdown > li > a,
+    .dropdown > li > button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 11px 18px;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid #F0EDE8;
+      background: none;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      cursor: pointer;
+      font-family: 'Nunito Sans', sans-serif;
+      text-align: left;
+      transition: background 0.15s, color 0.15s, padding-left 0.15s;
+    }
+    .dropdown > li:last-child > a,
+    .dropdown > li:last-child > button { border-bottom: none; }
+    .dropdown > li > a:hover,
+    .dropdown > li > button:hover {
+      background: var(--cream);
+      color: var(--teal);
+      padding-left: 24px;
+    }
+
+    /* Level-2 sub-dropdown */
+    .sub-dropdown {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      min-width: 210px;
+      background: #fff;
+      border-top: 3px solid var(--gold);
+      box-shadow: 4px 8px 28px rgba(14,42,71,0.13);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(6px);
+      transition: opacity 0.18s, transform 0.18s;
+      z-index: 1001;
+      list-style: none;
+    }
+    .dropdown > li:hover > .sub-dropdown {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(0);
+    }
+    .sub-dropdown > li > a {
+      display: block;
+      padding: 10px 18px;
+      font-size: 0.78rem;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid #F0EDE8;
+      transition: background 0.15s, color 0.15s, padding-left 0.15s;
+    }
+    .sub-dropdown > li:last-child > a { border-bottom: none; }
+    .sub-dropdown > li > a:hover { background: var(--cream); color: var(--teal); padding-left: 24px; }
+
+    .has-sub::after { content: ' ›'; font-size: 0.9rem; opacity: 0.45; }
+
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    .hero {
+      position: relative;
+      height: 88vh;
+      min-height: 580px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(14,42,71,0.88) 0%, rgba(14,42,71,0.60) 55%, rgba(14,42,71,0.20) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 60px;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      max-width: 680px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-teal {
+      background: var(--teal);
+      color: #fff;
+      padding: 15px 34px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-teal:hover { background: var(--teal-light); transform: translateY(-2px); }
+    .btn-white-outline {
+      border: 2px solid rgba(255,255,255,0.6);
+      color: #fff;
+      padding: 14px 32px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+    .btn-white-outline:hover { border-color: var(--gold-light); background: rgba(212,168,67,0.15); }
+
+    .hero-infobar {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      z-index: 3;
+      background: rgba(14,42,71,0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+    }
+    .infobar-item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 28px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .infobar-item:last-child { border-right: none; }
+    .infobar-item:hover { background: rgba(26,122,138,0.3); }
+    .infobar-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .infobar-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); font-weight: 700; }
+    .infobar-val { font-size: 0.86rem; color: #fff; margin-top: 2px; }
+
+    /* ══════════════════════════════
+       PROMO
+    ══════════════════════════════ */
+    .promo-strip {
+      background: var(--gold);
+      padding: 15px 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .promo-strip p { font-size: 0.88rem; font-weight: 700; color: var(--navy); }
+    .promo-strip a {
+      background: var(--navy);
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .promo-strip a:hover { background: var(--teal); }
+
+    /* ══════════════════════════════
+       SHARED
+    ══════════════════════════════ */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+    .section-label::before { content: ''; width: 28px; height: 2px; background: var(--teal); }
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--navy);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    h2.section-title em { font-style: italic; color: var(--teal); }
+
+    /* ══════════════════════════════
+       ABOUT
+    ══════════════════════════════ */
+    .about-section { padding: 90px 0; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-imgs { position: relative; height: 500px; }
+    .about-img-main {
+      position: absolute;
+      top: 0; left: 0;
+      width: 75%; height: 85%;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 16px 48px rgba(14,42,71,0.18);
+    }
+    .about-img-secondary {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 55%; height: 55%;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 5px solid #fff;
+      box-shadow: 0 8px 28px rgba(14,42,71,0.15);
+    }
+    .about-badge-float {
+      position: absolute;
+      top: 50%; left: 62%;
+      transform: translate(-50%,-50%);
+      background: var(--teal);
+      color: #fff;
+      padding: 18px 22px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(26,122,138,0.35);
+      z-index: 2;
+      border: 3px solid #fff;
+    }
+    .about-badge-float strong { display: block; font-family: 'Playfair Display', serif; font-size: 2rem; }
+    .about-badge-float span { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+    .about-text p { color: var(--text-mid); line-height: 1.8; font-size: 0.95rem; margin-bottom: 18px; font-weight: 300; }
+    .about-checks { list-style: none; margin: 24px 0 36px; }
+    .about-checks li {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 0; font-size: 0.88rem; color: var(--text); font-weight: 600;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-checks li:last-child { border-bottom: none; }
+    .check-icon {
+      width: 22px; height: 22px;
+      background: var(--teal); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 0.65rem; flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════
+       SERVICES
+    ══════════════════════════════ */
+    .services-section { background: var(--cream); padding: 90px 0; }
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 56px;
+    }
+    .services-header p { color: var(--text-mid); line-height: 1.75; font-size: 0.92rem; font-weight: 300; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .service-card {
+      background: #fff; border-radius: 8px; overflow: hidden;
+      box-shadow: 0 2px 16px rgba(14,42,71,0.07);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(14,42,71,0.14); }
+    .service-card-img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .service-card-body { padding: 24px 22px 28px; }
+    .service-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--navy); margin-bottom: 10px; font-weight: 600;
+    }
+    .service-card-body p { font-size: 0.82rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 16px; font-weight: 300; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .service-tag {
+      font-size: 0.68rem; background: var(--cream); color: var(--teal);
+      padding: 4px 10px; border-radius: 20px; font-weight: 600;
+      border: 1px solid rgba(26,122,138,0.2);
+    }
+
+    /* ══════════════════════════════
+       PHOTO FEATURE
+    ══════════════════════════════ */
+    .photo-feature { display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; }
+    .photo-feature-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-feature-content {
+      background: var(--navy);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 72px 64px;
+    }
+    .photo-feature-content .section-label { color: var(--gold-light); }
+    .photo-feature-content .section-label::before { background: var(--gold); }
+    .photo-feature-content h2.section-title { color: #fff; }
+    .photo-feature-content h2.section-title em { color: var(--gold-light); }
+    .photo-feature-content p { color: rgba(255,255,255,0.7); font-size: 0.92rem; line-height: 1.75; font-weight: 300; margin-bottom: 32px; }
+    .hours-grid { display: grid; grid-template-columns: auto 1fr; gap: 6px 24px; margin-bottom: 32px; }
+    .hours-day { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+    .hours-time { font-size: 0.8rem; color: var(--gold-light); font-weight: 600; }
+
+    /* ══════════════════════════════
+       GALLERY
+    ══════════════════════════════ */
+    .gallery-section { padding: 90px 0; }
+    .gallery-header { margin-bottom: 48px; }
+    .photo-mosaic {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 220px 220px;
+      gap: 12px;
+    }
+    .mosaic-item { overflow: hidden; border-radius: 6px; }
+    .mosaic-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .mosaic-item:hover img { transform: scale(1.06); }
+    .mosaic-tall { grid-row: span 2; }
+
+    /* ══════════════════════════════
+       DOCTOR
+    ══════════════════════════════ */
+    .doctor-section { background: var(--cream); padding: 90px 0; }
+    .doctor-grid { display: grid; grid-template-columns: 420px 1fr; gap: 72px; align-items: center; }
+    .doctor-photo-wrap { position: relative; }
+    .doctor-photo { width: 100%; height: 520px; object-fit: cover; border-radius: 8px; display: block; box-shadow: 0 16px 48px rgba(14,42,71,0.18); }
+    .doctor-quote-card {
+      position: absolute; bottom: -24px; right: -24px;
+      background: var(--teal); color: #fff;
+      padding: 24px 28px; border-radius: 8px; max-width: 240px;
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 0.95rem; line-height: 1.5;
+      box-shadow: 0 8px 24px rgba(26,122,138,0.3);
+    }
+    .doctor-info h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); font-weight: 700; margin-bottom: 4px; }
+    .doctor-info .doctor-title { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); font-weight: 700; margin-bottom: 24px; }
+    .doctor-info p { color: var(--text-mid); line-height: 1.8; font-size: 0.92rem; font-weight: 300; margin-bottom: 14px; }
+    .doctor-credentials { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    .credential-chip { background: var(--navy); color: #fff; padding: 7px 16px; border-radius: 4px; font-size: 0.72rem; font-weight: 600; }
+
+    /* ══════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════ */
+    .testimonials-section { padding: 90px 0; }
+    .testimonials-header { margin-bottom: 52px; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testimonial-card { background: var(--cream); border-radius: 8px; padding: 36px 32px; border: 1px solid var(--border); }
+    .t-quote { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--teal); line-height: 0.6; margin-bottom: 20px; opacity: 0.35; }
+    .t-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .t-text { font-size: 0.9rem; color: var(--text); line-height: 1.75; font-style: italic; font-family: 'Playfair Display', serif; font-weight: 400; }
+    .t-author { margin-top: 20px; display: flex; align-items: center; gap: 12px; }
+    .t-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+    .t-name { font-size: 0.8rem; font-weight: 700; color: var(--navy); }
+    .t-loc { font-size: 0.72rem; color: var(--text-light); }
+
+    /* ══════════════════════════════
+       CTA
+    ══════════════════════════════ */
+    .cta-section { position: relative; padding: 100px 0; overflow: hidden; }
+    .cta-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1600&q=80') center/cover no-repeat; }
+    .cta-bg-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,42,71,0.93) 0%, rgba(14,42,71,0.75) 100%); }
+    .cta-content {
+      position: relative; z-index: 2;
+      max-width: 1280px; margin: 0 auto; padding: 0 60px;
+      display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center;
+    }
+    .cta-content h2 { font-family: 'Playfair Display', serif; font-size: 2.6rem; color: #fff; font-weight: 700; line-height: 1.2; margin-bottom: 14px; }
+    .cta-content h2 em { color: var(--gold-light); font-style: italic; }
+    .cta-content p { color: rgba(255,255,255,0.7); font-size: 0.92rem; font-weight: 300; }
+    .cta-right { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+    .cta-phone-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold-light); text-decoration: none; font-weight: 700; }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer { background: #0B2038; padding: 72px 0 0; color: rgba(255,255,255,0.45); }
+    .footer-grid { max-width: 1280px; margin: 0 auto; padding: 0 40px 60px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; }
+    .footer-brand .logo-wrap { margin-bottom: 18px; }
+    .footer-brand .logo-text strong { color: rgba(255,255,255,0.9); }
+    .footer-brand .logo-text span { color: var(--teal-light); }
+    .footer-brand p { font-size: 0.82rem; line-height: 1.75; font-weight: 300; max-width: 270px; }
+    .footer-brand .footer-social { display: flex; gap: 10px; margin-top: 20px; }
+    .social-btn { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.8rem; font-weight: 700; transition: background 0.2s, color 0.2s; }
+    .social-btn:hover { background: var(--teal); color: #fff; }
+    .footer-col h4 { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 22px; font-weight: 700; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: 0.8rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--teal-light); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); max-width: 1280px; margin: 0 auto; padding: 22px 40px; display: flex; justify-content: space-between; font-size: 0.72rem; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom a { color: rgba(255,255,255,0.35); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--teal-light); }
+
+    /* ══════════════════════════════
+       HAMBURGER
+    ══════════════════════════════ */
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { width: 26px; height: 2px; background: var(--navy); border-radius: 2px; }
+
+    /* ══════════════════════════════
+       HEADER MARQUEE
+    ══════════════════════════════ */
+    .header-marquee {
+      background: var(--teal);
+      overflow: hidden;
+      padding: 7px 0;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .header-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: headerMarquee 28s linear infinite;
+    }
+    .header-marquee-track:hover { animation-play-state: paused; }
+    .header-marquee-track span {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 28px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .header-marquee-track span::after {
+      content: '✦';
+      color: var(--gold-light);
+      font-size: 0.55rem;
+    }
+    @keyframes headerMarquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 1060px) {
+      .main-nav > li > a, .main-nav > li > button { padding: 0 9px; font-size: 0.73rem; }
+    }
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+      .main-nav {
+        display: none;
+        position: absolute; top: 78px; left: 0; right: 0;
+        background: #fff; flex-direction: column; height: auto;
+        box-shadow: 0 8px 24px rgba(14,42,71,0.12);
+        border-top: 2px solid var(--teal); z-index: 998; padding: 12px 0;
+      }
+      .main-nav.open { display: flex; }
+      .main-nav > li { height: auto; width: 100%; }
+      .main-nav > li > a, .main-nav > li > button { width: 100%; height: auto; padding: 13px 20px; justify-content: space-between; border-bottom: 1px solid #F0EDE8; }
+      .dropdown, .sub-dropdown { position: static; opacity: 1; pointer-events: all; transform: none; box-shadow: none; border-top: none; display: none; background: var(--cream); }
+      .dropdown.open, .sub-dropdown.open { display: block; }
+      .about-grid, .doctor-grid, .services-header { grid-template-columns: 1fr; }
+      .about-imgs { height: 320px; }
+      .photo-feature { grid-template-columns: 1fr; }
+      .photo-feature-img { height: 300px; }
+      .doctor-photo { height: 380px; }
+      .doctor-quote-card { display: none; }
+      .photo-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .mosaic-tall { grid-row: span 1; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .cta-content { grid-template-columns: 1fr; }
+      .hero-infobar { flex-wrap: wrap; }
+      .infobar-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .services-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 580px) {
+      .topbar { flex-direction: column; gap: 4px; text-align: center; font-size: 0.65rem; padding: 8px 16px; }
+      .hero-content { padding: 0 24px; }
+      .container { padding: 0 20px; }
+      .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; padding: 0 20px 40px; }
+      .photo-mosaic { grid-template-columns: 1fr; }
+      .photo-feature-content { padding: 48px 28px; }
+      .cta-content { padding: 0 24px; }
+      .footer-bottom { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span>📍 1519 US-41, Suite B-8, Schererville, IN 46375</span>
+      <span>|</span>
+      <span>Mon–Fri: 7:30am–8pm &nbsp;·&nbsp; Sat: 9am–5pm</span>
+    </div>
+    <div class="topbar-right">
+      <span>📞 <a href="tel:2193190108">219-319-0108</a></span>
+      <a href="https://book2.getweave.com/845baa51-0eab-4522-92ac-bfd6c9795e79/request-appointment?source=WEBSITE" target="_blank">Book Online →</a>
+    </div>
+  </div>
+
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo-wrap">
+        <div class="logo-icon">🦷</div>
+        <div class="logo-text">
+          <strong>Northwest Indiana Dental Care</strong>
+          <span>Schererville, Indiana</span>
+        </div>
+      </a>
+
+      <ul class="main-nav" id="mainNav">
+        <li><a href="#">Home</a></li>
+
+        <!-- Patient Information -->
+        <li>
+          <button onclick="toggleDD(this)">Patient Information <span class="caret">▼</span></button>
+          <ul class="dropdown">
+            <li><a href="#">Scheduling</a></li>
+            <li><a href="#">Offers</a></li>
+            <li><a href="#">We Love Insurance</a></li>
+            <li>
+              <button class="has-sub" onclick="toggleSub(this)">Patient Education</button>
+              <ul class="sub-dropdown">
+                <li><a href="#">3D Dental Imaging</a></li>
+                <li><a href="#">Digital X-Rays</a></li>
+                <li><a href="#">Dry Mouth (Xerostomia)</a></li>
+                <li><a href="#">Early Cavity Detection</a></li>
+                <li><a href="#">Intraoral Camera</a></li>
+                <li><a href="#">Local Anesthesia</a></li>
+                <li><a href="#">Oral Cancer Screening</a></li>
+                <li><a href="#">Sterilization</a></li>
+                <li><a href="#">Tooth Decay</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Meet Us -->
+        <li>
+          <button onclick="toggleDD(this)">Meet Us <span class="caret">▼</span></button>
+          <ul class="dropdown">
+            <li><a href="#">Jorge Rodriguez Jorda, DDS</a></li>
+            <li><a href="#">Patient Testimonials</a></li>
+          </ul>
+        </li>
+
+        <!-- Dental Services -->
+        <li>
+          <button onclick="toggleDD(this)">Dental Services <span class="caret">▼</span></button>
+          <ul class="dropdown">
+            <li><a href="#">Emergency Dentistry</a></li>
+            <li>
+              <button class="has-sub" onclick="toggleSub(this)">General Dentistry</button>
+              <ul class="sub-dropdown">
+                <li><a href="#">Bridges</a></li>
+                <li><a href="#">Crowns</a></li>
+                <li><a href="#">Dentures</a></li>
+                <li><a href="#">Fillings</a></li>
+                <li><a href="#">Fluoride Treatments</a></li>
+                <li><a href="#">Inlays &amp; Onlays</a></li>
+                <li><a href="#">Nightguards</a></li>
+                <li><a href="#">Sealants</a></li>
+                <li><a href="#">Sports Mouthguards</a></li>
+                <li><a href="#">Teeth Cleanings</a></li>
+                <li><a href="#">TMD Therapy (Jaw Pain)</a></li>
+              </ul>
+            </li>
+            <li>
+              <button class="has-sub" onclick="toggleSub(this)">Cosmetic Dentistry</button>
+              <ul class="sub-dropdown">
+                <li><a href="#">Bonding</a></li>
+                <li><a href="#">Full Mouth Rehabilitation</a></li>
+                <li><a href="#">Teeth Whitening</a></li>
+                <li><a href="#">Veneers – Lumineers®</a></li>
+                <li><a href="#">Veneers</a></li>
+                <li><a href="#">BOTOX®</a></li>
+              </ul>
+            </li>
+            <li>
+              <button class="has-sub" onclick="toggleSub(this)">Pediatric Dentistry</button>
+              <ul class="sub-dropdown">
+                <li><a href="#">Your Child's First Exam</a></li>
+              </ul>
+            </li>
+            <li>
+              <button class="has-sub" onclick="toggleSub(this)">Orthodontics</button>
+              <ul class="sub-dropdown">
+                <li><a href="#">Clear Braces</a></li>
+                <li><a href="#">Invisalign®</a></li>
+                <li><a href="#">Metal Braces</a></li>
+              </ul>
+            </li>
+            <li>
+              <button class="has-sub" onclick="toggleSub(this)">Oral Surgery</button>
+              <ul class="sub-dropdown">
+                <li><a href="#">Bone Grafting</a></li>
+                <li><a href="#">Crown Lengthening</a></li>
+                <li><a href="#">Dental Implants</a></li>
+                <li><a href="#">Dental Implants – Mini</a></li>
+                <li><a href="#">Implant-Supported Bridges</a></li>
+                <li><a href="#">Implant-Supported Dentures</a></li>
+                <li><a href="#">Tooth Extractions</a></li>
+                <li><a href="#">Wisdom Teeth Extraction</a></li>
+              </ul>
+            </li>
+            <li>
+              <button class="has-sub" onclick="toggleSub(this)">Endodontics</button>
+              <ul class="sub-dropdown">
+                <li><a href="#">Root Canal Therapy</a></li>
+              </ul>
+            </li>
+            <li>
+              <button class="has-sub" onclick="toggleSub(this)">Periodontics</button>
+              <ul class="sub-dropdown">
+                <li><a href="#">Gum Disease</a></li>
+                <li><a href="#">Scaling &amp; Root Planing</a></li>
+              </ul>
+            </li>
+            <li>
+              <button class="has-sub" onclick="toggleSub(this)">Sedation Dentistry</button>
+              <ul class="sub-dropdown">
+                <li><a href="#">Conscious Sedation</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="https://book2.getweave.com/845baa51-0eab-4522-92ac-bfd6c9795e79/request-appointment?source=WEBSITE" target="_blank" class="nav-book-btn">Book Appointment</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- HEADER MARQUEE -->
+    <div class="header-marquee">
+      <div class="header-marquee-track">
+        <span>Emergency Dentistry</span>
+        <span>Invisalign®</span>
+        <span>Dental Implants</span>
+        <span>Teeth Whitening</span>
+        <span>Porcelain Veneers</span>
+        <span>Root Canal Therapy</span>
+        <span>BOTOX®</span>
+        <span>Sedation Dentistry</span>
+        <span>Pediatric Care</span>
+        <span>Oral Surgery</span>
+        <span>Orthodontics</span>
+        <span>Gum Disease Treatment</span>
+        <span>Teeth Cleanings</span>
+        <span>Crowns &amp; Bridges</span>
+        <span>Emergency Dentistry</span>
+        <span>Invisalign®</span>
+        <span>Dental Implants</span>
+        <span>Teeth Whitening</span>
+        <span>Porcelain Veneers</span>
+        <span>Root Canal Therapy</span>
+        <span>BOTOX®</span>
+        <span>Sedation Dentistry</span>
+        <span>Pediatric Care</span>
+        <span>Oral Surgery</span>
+        <span>Orthodontics</span>
+        <span>Gum Disease Treatment</span>
+        <span>Teeth Cleanings</span>
+        <span>Crowns &amp; Bridges</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-img"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">✦ Schererville's Trusted Family Dentist</div>
+      <h1>Your Smile Deserves<br/><em>Expert Care</em></h1>
+      <p>Comprehensive dental care for every member of your family — from preventive cleanings to advanced implants, cosmetic veneers, and orthodontics.</p>
+      <div class="hero-btns">
+        <a href="https://book2.getweave.com/845baa51-0eab-4522-92ac-bfd6c9795e79/request-appointment?source=WEBSITE" class="btn-teal" target="_blank">Book an Appointment</a>
+        <a href="tel:2193190108" class="btn-white-outline">Call 219-319-0108</a>
+      </div>
+    </div>
+    <div class="hero-infobar">
+      <a href="#" class="infobar-item">
+        <div class="infobar-icon">📅</div>
+        <div>
+          <div class="infobar-label">Schedule Online</div>
+          <div class="infobar-val">Quick &amp; easy booking</div>
+        </div>
+      </a>
+      <a href="#" class="infobar-item">
+        <div class="infobar-icon">🕐</div>
+        <div>
+          <div class="infobar-label">Extended Hours</div>
+          <div class="infobar-val">Open until 8pm &amp; Saturdays</div>
+        </div>
+      </a>
+      <a href="#" class="infobar-item">
+        <div class="infobar-icon">🛡️</div>
+        <div>
+          <div class="infobar-label">We Love Insurance</div>
+          <div class="infobar-val">Most major plans accepted</div>
+        </div>
+      </a>
+      <a href="#" class="infobar-item">
+        <div class="infobar-icon">🚨</div>
+        <div>
+          <div class="infobar-label">Emergency Care</div>
+          <div class="infobar-val">Same-day appointments</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- PROMO -->
+  <div class="promo-strip">
+    <p>💎 Insured patients: $0 Teeth Cleanings — Call for details!</p>
+    <a href="tel:2193190108">Call Now</a>
+    <p>🦷 New patients welcome — flexible scheduling available</p>
+    <a href="https://book2.getweave.com/845baa51-0eab-4522-92ac-bfd6c9795e79/request-appointment?source=WEBSITE" target="_blank">Book Online</a>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-imgs">
+          <img class="about-img-main"
+            src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?w=800&q=80"
+            alt="Dental office"/>
+          <img class="about-img-secondary"
+            src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=500&q=80"
+            alt="Happy patient"/>
+          <div class="about-badge-float">
+            <strong>6</strong>
+            <span>Days a Week</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <div class="section-label">Welcome to Our Practice</div>
+          <h2 class="section-title">A New Tradition of <em>Trusted &amp; Caring</em> Dental Excellence</h2>
+          <p>At Northwest Indiana Dental Care, we have extensive experience in all aspects of modern dentistry — from preventive education and routine hygiene to expert cosmetic and restorative solutions.</p>
+          <p>Locally owned and community-focused, we treat every patient like a neighbor — because you are.</p>
+          <ul class="about-checks">
+            <li><span class="check-icon">✓</span> Family-friendly — kids and adults welcome</li>
+            <li><span class="check-icon">✓</span> Latest technology: 3D imaging, digital X-rays</li>
+            <li><span class="check-icon">✓</span> Highest sterilization and safety standards</li>
+            <li><span class="check-icon">✓</span> Most insurance plans accepted</li>
+            <li><span class="check-icon">✓</span> Flexible evening and Saturday hours</li>
+          </ul>
+          <a href="https://book2.getweave.com/845baa51-0eab-4522-92ac-bfd6c9795e79/request-appointment?source=WEBSITE" class="btn-teal" target="_blank">Book Your Visit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="container">
+      <div class="services-header">
+        <div>
+          <div class="section-label">What We Offer</div>
+          <h2 class="section-title">Complete Dental Care<br/>Under <em>One Roof</em></h2>
+        </div>
+        <p>From routine checkups to advanced oral surgery, our experienced team provides expert care across every discipline of modern dentistry — with warmth, precision, and the latest technology.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="General Dentistry"/>
+          <div class="service-card-body">
+            <h3>General Dentistry</h3>
+            <p>The foundation of lasting oral health — cleanings, exams, fillings, crowns, and preventive care for every age.</p>
+            <div class="service-tags">
+              <span class="service-tag">Teeth Cleanings</span>
+              <span class="service-tag">Crowns &amp; Bridges</span>
+              <span class="service-tag">Fillings</span>
+              <span class="service-tag">Nightguards</span>
+              <span class="service-tag">TMD Therapy</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80" alt="Cosmetic Dentistry"/>
+          <div class="service-card-body">
+            <h3>Cosmetic Dentistry</h3>
+            <p>Transform your smile with aesthetic treatments tailored to your unique goals and confidence.</p>
+            <div class="service-tags">
+              <span class="service-tag">Veneers &amp; Lumineers®</span>
+              <span class="service-tag">Teeth Whitening</span>
+              <span class="service-tag">Bonding</span>
+              <span class="service-tag">BOTOX®</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1629909615957-be38d48fbbe4?w=600&q=80" alt="Dental Implants"/>
+          <div class="service-card-body">
+            <h3>Oral Surgery &amp; Implants</h3>
+            <p>Skilled surgical care including implants, extractions, bone grafting, and implant-supported dentures.</p>
+            <div class="service-tags">
+              <span class="service-tag">Dental Implants</span>
+              <span class="service-tag">Mini Implants</span>
+              <span class="service-tag">Extractions</span>
+              <span class="service-tag">Bone Grafting</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1588776813677-77aaf5595b83?w=600&q=80" alt="Orthodontics"/>
+          <div class="service-card-body">
+            <h3>Orthodontics</h3>
+            <p>Straighten your smile comfortably and discreetly with modern alignment solutions for all ages.</p>
+            <div class="service-tags">
+              <span class="service-tag">Invisalign®</span>
+              <span class="service-tag">Clear Braces</span>
+              <span class="service-tag">Metal Braces</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1595867818082-083862f3d630?w=600&q=80" alt="Pediatric Dentistry"/>
+          <div class="service-card-body">
+            <h3>Pediatric Dentistry</h3>
+            <p>Gentle, caring dental experiences that build lifelong healthy habits for your little ones.</p>
+            <div class="service-tags">
+              <span class="service-tag">First Exam</span>
+              <span class="service-tag">Fluoride</span>
+              <span class="service-tag">Sealants</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80" alt="Sedation Dentistry"/>
+          <div class="service-card-body">
+            <h3>Sedation &amp; Periodontics</h3>
+            <p>Anxiety-free care and complete gum health treatment — so everyone can enjoy a healthy smile.</p>
+            <div class="service-tags">
+              <span class="service-tag">Conscious Sedation</span>
+              <span class="service-tag">Gum Disease</span>
+              <span class="service-tag">Root Canal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS PHOTO FEATURE -->
+  <div class="photo-feature">
+    <img class="photo-feature-img"
+      src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=900&q=80"
+      alt="Happy family"/>
+    <div class="photo-feature-content">
+      <div class="section-label">Hours &amp; Location</div>
+      <h2 class="section-title">We're Open When<br/><em>You Need Us</em></h2>
+      <p>Extended weekday hours until 8pm and Saturday appointments make it easy to fit dental care into your busy life.</p>
+      <div class="hours-grid">
+        <span class="hours-day">Monday – Friday</span>
+        <span class="hours-time">7:30 AM – 8:00 PM</span>
+        <span class="hours-day">Saturday</span>
+        <span class="hours-time">9:00 AM – 5:00 PM</span>
+        <span class="hours-day">Sunday</span>
+        <span class="hours-time">Closed</span>
+      </div>
+      <a href="tel:2193190108" class="btn-teal" style="align-self:flex-start;">📞 219-319-0108</a>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-header">
+        <div class="section-label">Our Practice</div>
+        <h2 class="section-title">A Warm, <em>Modern</em> Environment</h2>
+      </div>
+      <div class="photo-mosaic">
+        <div class="mosaic-item mosaic-tall">
+          <img src="https://images.unsplash.com/photo-1445527815219-ecbfec67492e?w=600&q=80" alt="Dental office"/>
+        </div>
+        <div class="mosaic-item">
+          <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=600&q=80" alt="Patient smiling"/>
+        </div>
+        <div class="mosaic-item">
+          <img src="https://images.unsplash.com/photo-1603807008857-ad66b70431e3?w=600&q=80" alt="Family smiling"/>
+        </div>
+        <div class="mosaic-item mosaic-tall">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80" alt="Dental equipment"/>
+        </div>
+        <div class="mosaic-item">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&q=80" alt="Dental checkup"/>
+        </div>
+        <div class="mosaic-item">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80" alt="Smile result"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTOR -->
+  <section class="doctor-section">
+    <div class="container">
+      <div class="doctor-grid">
+        <div class="doctor-photo-wrap">
+          <img class="doctor-photo"
+            src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=700&q=80"
+            alt="Dr. Jorge Rodriguez Jorda, DDS"/>
+          <div class="doctor-quote-card">
+            "My goal is for every patient to leave our office healthier, happier, and more confident."
+          </div>
+        </div>
+        <div class="doctor-info">
+          <div class="section-label">Meet Your Dentist</div>
+          <h3>Dr. Jorge Rodriguez Jorda</h3>
+          <div class="doctor-title">DDS · Lead Dentist &amp; Practice Owner</div>
+          <p>Dr. Rodriguez Jorda brings extensive experience and a genuine passion for patient care to every appointment. His philosophy centers on treating each patient as an individual — listening first, then crafting personalized treatment plans that prioritize comfort and long-term health.</p>
+          <p>As a locally owned, community-focused practice, Northwest Indiana Dental Care reflects his deep commitment to Schererville and the surrounding communities he serves.</p>
+          <div class="doctor-credentials">
+            <span class="credential-chip">Doctor of Dental Surgery</span>
+            <span class="credential-chip">Invisalign® Certified</span>
+            <span class="credential-chip">Implant Specialist</span>
+            <span class="credential-chip">Sedation Trained</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-header">
+        <div class="section-label">Patient Stories</div>
+        <h2 class="section-title">Why Our Patients <em>Can't Stop Smiling</em></h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="t-quote">"</div>
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">The most caring dental practice I've ever visited. Dr. Rodriguez Jorda took time to explain every step. The staff made me feel completely at ease from the moment I walked in.</p>
+          <div class="t-author">
+            <img class="t-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Sarah M"/>
+            <div><div class="t-name">Sarah M.</div><div class="t-loc">Schererville, IN</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-quote">"</div>
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">I was terrified of the dentist for years. The sedation option changed everything for me. I actually look forward to my appointments now — never thought I'd say that!</p>
+          <div class="t-author">
+            <img class="t-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="James K"/>
+            <div><div class="t-name">James K.</div><div class="t-loc">Merrillville, IN</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="t-quote">"</div>
+          <div class="t-stars">★★★★★</div>
+          <p class="t-text">Brought my kids in for their first exams and the team was incredible with them. My daughter actually asked when she could come back. Highly recommend for families!</p>
+          <div class="t-author">
+            <img class="t-avatar" src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=100&q=80" alt="Maria T"/>
+            <div><div class="t-name">Maria T.</div><div class="t-loc">Crown Point, IN</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-bg"></div>
+    <div class="cta-bg-overlay"></div>
+    <div class="cta-content">
+      <div>
+        <h2>Ready to <em>Transform</em><br/>Your Smile?</h2>
+        <p>Book your appointment online or call us today. We welcome new patients, accept most insurance plans, and offer same-day emergency care.</p>
+      </div>
+      <div class="cta-right">
+        <a href="tel:2193190108" class="cta-phone-num">219-319-0108</a>
+        <a href="https://book2.getweave.com/845baa51-0eab-4522-92ac-bfd6c9795e79/request-appointment?source=WEBSITE" class="btn-teal" target="_blank" style="width:100%;text-align:center;">Book Appointment Online</a>
+        <span style="font-size:0.72rem;color:rgba(255,255,255,0.4);">1519 US-41, Suite B-8 · Schererville, IN</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo-wrap">
+          <div class="logo-icon">🦷</div>
+          <div class="logo-text">
+            <strong>Northwest Indiana Dental Care</strong>
+            <span>Schererville, Indiana</span>
+          </div>
+        </a>
+        <p>A new Schererville tradition of trusted and caring dental excellence. Locally owned and deeply committed to our community's health.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">f</a>
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">g</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Dental Services</h4>
+        <ul>
+          <li><a href="#">Emergency Dentistry</a></li>
+          <li><a href="#">General Dentistry</a></li>
+          <li><a href="#">Cosmetic Dentistry</a></li>
+          <li><a href="#">Dental Implants</a></li>
+          <li><a href="#">Orthodontics / Invisalign®</a></li>
+          <li><a href="#">Oral Surgery</a></li>
+          <li><a href="#">Periodontics</a></li>
+          <li><a href="#">Sedation Dentistry</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Patient Info</h4>
+        <ul>
+          <li><a href="#">Scheduling</a></li>
+          <li><a href="#">Offers &amp; Specials</a></li>
+          <li><a href="#">We Love Insurance</a></li>
+          <li><a href="#">Patient Education</a></li>
+          <li><a href="#">Meet Dr. Rodriguez Jorda</a></li>
+          <li><a href="#">Patient Testimonials</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li><a href="#">1519 US-41, Suite B-8</a></li>
+          <li><a href="#">Schererville, IN 46375</a></li>
+          <li><a href="tel:2193190108">📞 219-319-0108</a></li>
+          <li><a href="#">Get Directions</a></li>
+          <li><a href="#">Book Appointment Online</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Northwest Indiana Dental Care. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms &amp; Conditions</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile hamburger
+    function toggleMenu() {
+      document.getElementById('mainNav').classList.toggle('open');
+    }
+    // Mobile: toggle dropdown on click
+    function toggleDD(btn) {
+      if (window.innerWidth > 900) return;
+      btn.nextElementSibling.classList.toggle('open');
+    }
+    function toggleSub(btn) {
+      if (window.innerWidth > 900) return;
+      btn.nextElementSibling.classList.toggle('open');
+    }
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+      const nav = document.getElementById('mainNav');
+      const hb = document.getElementById('hamburgerBtn');
+      if (nav && hb && !nav.contains(e.target) && !hb.contains(e.target)) {
+        nav.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
